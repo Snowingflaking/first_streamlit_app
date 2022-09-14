@@ -40,13 +40,15 @@ def insert_row_snowflake(new_fruit):
     my_cur.execute("insert into fruit_load_list values ('" + new_fruit + "')")
     return "Thanks for adding " + new_fruit
 
-
+def get_fruit_load_list():
+  with my_cnx.cursor() as my_cur:
+    my_cur.exectute("select * from fruit_load_list")
+    return my_cur.fetchall()
 
 
 # new section to display fruityvice api response - line 24 in lessons
 # variables ---  after all below are done!
 
-streamlit.header("Fruityvice Fruit Advice!")
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   # fruit_choice = requests.get('https://fruityvice.com/api/fruit/')  # line 33
@@ -68,6 +70,9 @@ if streamlit.button('Add a fruit to the list'):
   back_from_function = insert_row_snowflake(add_my_fruit)
   streamlit.text(back_from_function)
 
+streamlit.header("The fruit load list contains:")
+  
+  
 streamlit.stop()
     
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
@@ -93,6 +98,7 @@ streamlit.dataframe(fruityvice_normalized)
 
 # line 37 in exercise 12  - more inserts to the line for cleanup
 # don't run anything past here till we trouble shoot   - new 9/14  moves all the imports to the top!
+
 streamlit.stop()
 
 # import snowflake.connector
