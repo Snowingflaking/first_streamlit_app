@@ -38,7 +38,7 @@ streamlit.write('The user entered ', fruit_choice)
 # import requests
 # fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 # fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)  # line 33
 
 # streamlit.text(fruityvice_response)
 
